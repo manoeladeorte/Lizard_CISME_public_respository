@@ -1,19 +1,11 @@
-# Script to calculate DIC based photosynthesis
-
-# Written by Manoela Romano de Orte (with help from David Koweek) on April 18 2019
+# Script to calculate DIC-based photosynthesis
 
 #----Initialize_workspace----
 
-#Load necessary packages
-library(tidyverse)
-library(seacarb)
-
-
 #Source necessary scripts
-source("add_and_clean_CISME_oxygen_pH.R") 
-source("calculate_calcification.R") # We are going to use the calcification values to calculate photosynthesis based on DIC
-source("averaging_interval.R") #sets the interval of which beginning and end measurements are averaged
-source("CISME_dimensions.R")
+source(here::here("scripts", "add_and_clean_CISME_oxygen_pH.R"))
+source(here::here("scripts", "calculate_calcification.R")) # We are going to use the calcification values to calculate photosynthesis based on DIC
+source(here::here("scripts", "averaging_interval.R")) #sets the interval of which beginning and end measurements are averaged
 
 #----Calculate_DIC_from_TA_and_pH_data----
 

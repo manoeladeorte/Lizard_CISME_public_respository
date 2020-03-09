@@ -1,13 +1,10 @@
 # Combine calcification and photosynthesis rate estimates into a single data frame
-# Written by Manoela Romano de Orte (with help from David Koweek)
-
 
 #----Initialize_workspace----
 
 #Source calcification and photosynthesis data sets
-source("calculate_photosynthesis_DIC.R") #this script already sources the calcification rate calculations
-source("calculate_photosynthesis_oxygen.R")
-source("calculate_Q.R")
+source(here::here("scripts", "calculate_photosynthesis_oxygen.R"))
+source(here::here("scripts", "calculate_Q.R")) #this script sources ("calculate_photosynthesis_DIC.R"), a dependency for this script
 
 #Set seed for later Monte Carlo generation of Pnet_O2 distributions
 set.seed(1234)

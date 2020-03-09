@@ -1,18 +1,11 @@
-# Script to plot delta O2 vs. Q from CISME measurements (another way to visualize Q)
-# Written by Manoela Romano de Orte (with help from David Koweek)
+# Script to plot delta O2 vs. the metabolic quotient from CISME measurements 
 
 
 #----Initialize_workspace----
 
-#Source cleaned data
-library(viridis)
-source("clean_metabolic_rates_data_set.R")
+source(here::here("scripts", "clean_metabolic_rates_data_set.R"))
 
-
-
-
-
-#----Generate_plot----
+#----Build_plot----
 
 #Build character lookup tables for facet lables
 metabolism_table <- c(Resp = "Dark", Photo = "Light")
@@ -61,4 +54,9 @@ dO2_Q_plot <-
              labeller = labeller(Metabolism = metabolism_table)) +
   theme(strip.text.x = element_text(size = 14))
 
-plot(dO2_Q_plot)
+#----Export_plot----
+ggsave(filename = here::here("output", "figures", "figure_3.pdf"),
+       plot = dO2_Q_plot,
+       height = 6,
+       width = 8,
+       units = "in")

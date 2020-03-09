@@ -2,19 +2,10 @@
 # O2 data will be used for CISME photosynthesis measurements
 # pH data will be combined with discrete alkalinity measurements to calculate DIC and then photosynthesis
 
-# Written by Manoela Romano de Orte (with help from David Koweek)
-
-
 #----Initialize_workspace----
 
-#Load necessary packages
-library(tidyverse)
-
 #Source necessary scripts
-source("add_CISME_temperature.R")
-
-#Define path for the individual CISME files
-individual_files_path <- "/Users/manoela/Desktop/carnegie/LIRS/cisme_analysis/Data_treatment_ken/CISME_data_all/"
+source(here::here("scripts", "add_CISME_temperature.R"))
 
 #----Grab_CISME_data----
 #Set up lists to collect data (later will be combined into a single data frame)
@@ -28,13 +19,17 @@ for (i in 1:nrow(LIRS_master_data)) {
     
     #Create the full path to each file
     CISME_file <- str_c(individual_files_path,
+                        "/",
                         LIRS_master_data[["file"]][i])
     
     #Open each file
-    CISME_data <- 
-      read_csv(file = CISME_file,
-               col_types = c("ddddddddddddd"),
-               skip = 20)
+      #wrap in 'supressWarnings' to eliminate parsing error warnings on each file
+    suppressWarnings(
+      CISME_data <- 
+        read_csv(file = CISME_file,
+                 col_types = c("ddddddddddddd"),
+                 skip = 20)
+    )
     
     #Grab the necessary information from the CISME file to place it into our data frame
     CISME_elapsed_time <- 

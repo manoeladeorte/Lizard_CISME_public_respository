@@ -1,28 +1,14 @@
 # Script to load the master primary data for the Lizard Island CISME data set
-# Written by Manoela Romano de Orte (with help from David Koweek)
 
 #----Initialize_workspace----
 
-#Loading the necessary packages
-library(tidyverse)
-library(readxl)
-
-#Define the path
-primary_data_path <- "/Users/manoela/Desktop/carnegie/LIRS/cisme_analysis/data.information/"
-
-#Define the most up-to-date primary data file
-primary_data_file <- "Data_Information 181113.xlsx"
-
-#Define the primary data file
-filename <- str_c(primary_data_path,
-                  primary_data_file,
-                  sep= "")
+source(here::here("scripts", "initialize_workspace.R"))
 
 #----Load_the_primary_data_file----
 
 LIRS_master_data <- 
-  read_xlsx(path = filename, #This is the filename of the data set. We defined this filename by concatenating the path and the file (see above)
-            sheet = "Planilha1", #This is where we define the sheet in the Excel workbook to open
+  read_xlsx(path = CISME_master_data, 
+            sheet = "Planilha1", 
             col_names = c("Replicate", #Here we define the names of each of the columns as we want them
                           "Filename",
                           "Date",

@@ -1,10 +1,10 @@
-#Script to plot calcification data for only one specie
-#Written by Manoela Romano de Orte (with help from David Koweek)
+#Script to plot calcification data for only one species
 
-#Load the viridis colour package for later plotting
-library(viridis)
-source ("clean_metabolic_rates_data_set.R")
+#----Initialize_workspace----
 
+source(here::here("scripts", "clean_metabolic_rates_data_set.R"))
+
+#----Build_plot----
 
 calcification_plot <- 
   LIRS_metabolic_rates_clean %>% 
@@ -46,9 +46,12 @@ calcification_plot <-
   #Increase plot title font size
   theme(strip.text.x = element_text(size = 14))
 
-
-plot(calcification_plot)
-
+#----Export_plot----
+ggsave(filename = here::here("output", "figures", "figure_2.pdf"),
+       plot = calcification_plot,
+       height = 6,
+       width = 6,
+       units = "in")
 
 
 

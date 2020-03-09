@@ -1,19 +1,9 @@
-# Script to calculate photosynthesis and respiration from CISME oxygen data
-
-
-# Written by Manoela Romano de Orte (with help from David Koweek)
-
+# Script to calculate photosynthesis and respiration from CISME dissolved oxygen continuous measurements
 
 #----Initialize_workspace----
 
-#Load necessary packages
-library(tidyverse)
-library(seacarb)
-library(broom) # package for cleaning linear regression results
-
 #Source necessary scripts
-source("add_and_clean_CISME_oxygen_pH.R")
-source("CISME_dimensions.R")
+source(here::here("scripts", "add_and_clean_CISME_oxygen_pH.R"))
 
 #----Calculate_photosynthesis_and_respiration----
 
@@ -21,7 +11,7 @@ source("CISME_dimensions.R")
 #Calculate seawater density
 CISME_oxygen_pH_data_sets_cleaned <- 
   CISME_oxygen_pH_data_sets_cleaned %>% 
-  mutate(seawater_density = swRho(salinity = Salinity_imputed, #kg/m??3
+  mutate(seawater_density = swRho(salinity = Salinity_imputed, #kg/m^3
                                   temperature = CISME_temperature,
                                   pressure = 0))
 

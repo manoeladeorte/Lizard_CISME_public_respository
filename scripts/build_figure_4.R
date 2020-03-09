@@ -1,16 +1,10 @@
-#Script to plot the relationships between net calcification and net photosynthesis PQ on LIRS data
-#Written by Manoela Romano de Orte (with help from David Koweek) 1 March 2019
+#Script to plot the relationships between net calcification and net photosynthesis on LIRS CISME data
 
 #----Initialize_workspace----
 
-#Load necessary packages
-library(viridis)
-library(svglite)
+source(here::here("scripts", "clean_metabolic_rates_data_set.R"))
 
-#Source necessary scripts
-source("clean_metabolic_rates_data_set.R")
-
-#----Generate_plots----
+#----Build_plot----
 
 calcification_photosynthesis_plot <- 
   LIRS_metabolic_rates_clean %>% 
@@ -36,9 +30,9 @@ calcification_photosynthesis_plot <-
                      labels = c("Dark","Light"),
                      discrete = TRUE) +
   guides(fill = guide_legend(override.aes = list(shape = c(21, 24)))) +
-  scale_x_continuous(name = expression(P[net]~(mmol~C~m^{-2}~hr^{-1})),
+  scale_x_continuous(name = expression(Net~photosynthesis~(mmol~C~m^{-2}~hr^{-1})),
                      limits = c(-19, 53)) +
-  scale_y_continuous(name = expression(G[net]~(mmol~C~m^{-2}~hr^{-1})),
+  scale_y_continuous(name = expression(Net~calcification~(mmol~C~m^{-2}~hr^{-1})),
                      limits = c(-7,12)) +
   #Add guide lines for Gnet = 0, Pnet = 0
   geom_vline(xintercept = 0,
@@ -73,10 +67,10 @@ calcification_photosynthesis_plot <-
         axis.title = element_text(size = 14),
         axis.text = element_text(size = 14))
 
- plot(calcification_photosynthesis_plot)
+#----Export_plot----
 
-#ggsave(filename = "~/Desktop/carnegie/LIRS/R_analysis/plots/Final_plots/Pnet_Gnet.svg",
- #      plot = calcification_photosynthesis_plot,
-  #     width = 8,
-   #    height = 6,
-    #   units = "in")
+ggsave(filename = here::here("output", "figures", "figure_4.pdf"),
+       plot = calcification_photosynthesis_plot,
+       height = 8,
+       width = 8,
+       units = "in")

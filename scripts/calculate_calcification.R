@@ -1,22 +1,11 @@
-# Script to calculate delta alkalinity for the Lizard Island CISME data set
-# Written by Manoela Romano de Orte
-
+# Script to calculate calcification rates from total alkalinity anomalies in the Lizard Island CISME data set
 
 #----Initialize_workspace----
 
-#Load necessary packages
-library(seacarb)
-
 #Source the script to load the data set with appended CISME temperature readings, Temperature needed to calculate density
-source("add_CISME_temperature.R")
-
-#Source script with area and volume measurements of the CISME unit
-source("CISME_dimensions.R")
-
+source(here::here("scripts", "add_CISME_temperature.R"))
 
 #----Calculate_calcification----
-
-
 
 #Eliminate rows in data set missing key measurements for calcification rate calculations
 LIRS_calcification <- 

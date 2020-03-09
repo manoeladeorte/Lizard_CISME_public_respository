@@ -1,38 +1,27 @@
 # Script to clean the master primary data for the Lizard Island CISME data set
-# Written by Manoela Romano de Orte (with help from David Koweek)
-
 
 #----Initialize_workspace----
 
-#Load necessary packages
-library(tidyverse)
-library(naniar) #package to work with missing data
-library(lubridate) #package to work with dates and times
-
 #Source the script to load the data
-source("load_primary_data.R")
+source(here::here("scripts", "load_primary_data.R"))
 
 #----Load_raw_total_alkalinity_data----
 #Load the data sheet of alkalinity runs for later use (see below)
 
-#Sheet of dates and day_sample_IDs
-TA_data_sheet_path <- 
-  "/Users/manoela/Desktop/carnegie/LIRS/cisme_analysis/ankalinity measurements/Mini TA/"
-
-TA_data_sheet_filename <- 
-  "Alkalinity Calculator _Lizard_10312018.xls"
+# #Sheet of dates and day_sample_IDs
+# TA_data_sheet_path <- 
+#   "/Users/manoela/Desktop/carnegie/LIRS/cisme_analysis/ankalinity measurements/Mini TA/"
+# 
+# TA_data_sheet_filename <- 
+#   "Alkalinity Calculator _Lizard_10312018.xls"
 
 TA_data_sheet <- 
-  read_xls(path = str_c(TA_data_sheet_path,
-                        TA_data_sheet_filename,
-                        sep = ""),
+  read_xls(path = TA_master_data,
            sheet = "sample_date")
 
 #Summary information for daily instrumental precision
 TA_precision_sheet <- 
-  read_xls(path = str_c(TA_data_sheet_path,
-                        TA_data_sheet_filename,
-                        sep = ""),
+  read_xls(path = TA_master_data,
            sheet = "Precision") %>% 
   rename(Run_Date = X__1, 
          St_Dev = DAILY,

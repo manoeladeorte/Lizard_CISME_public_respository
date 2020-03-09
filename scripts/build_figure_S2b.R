@@ -1,20 +1,17 @@
-#Written by Manoela Romano de Orte on May 7th
+#Plot to compare net photosynthesis estimates from DIC and TA anomalies vs. ...
+#.... times series of O2 and metabolic quotients
 
-#Load the viridis colour package for later plotting
-library(viridis)
-source ("clean_metabolic_rates_data_set.R")
+#----Initialize_workspace----
 
+source(here::here("scripts", "clean_metabolic_rates_data_set.R"))
 
-LIRS_metabolic_rates_clean <- filter (LIRS_metabolic_rates_clean, Species != "Goniastrea favulus")
-
-
-LIRS_metabolic_rates_clean <- filter (LIRS_metabolic_rates_clean, Species != "Favia favus")
-
-
+#----Build_plot----
 
 photosynthesis_Q_plot <- 
-  ggplot(data = LIRS_metabolic_rates_clean %>% arrange(photosynthesis_rate_oxygen_Q_mmol_h),
-         mapping = aes(x = Species, 
+  LIRS_metabolic_rates_clean %>% 
+  filter(Species == "Symphyllia recta") %>% 
+  arrange(photosynthesis_rate_oxygen_Q_mmol_h) %>% 
+  ggplot(mapping = aes(x = Species, 
                        y=photosynthesis_rate_oxygen_Q_mmol_h, 
                        fill = Metabolism)) + 
   geom_bar (stat = "identity", 
@@ -45,4 +42,10 @@ photosynthesis_Q_plot <-
               ncol = 2) 
 
 
-plot(photosynthesis_Q_plot)
+#----Export_plot----
+
+ggsave(filename = here::here("output", "figures", "figure_S2b.pdf"),
+       plot = photosynthesis_Q_plot,
+       height = 8,
+       width = 8,
+       units = "in")

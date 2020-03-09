@@ -1,22 +1,17 @@
-#Script to clean LIRS_metabolic_rates data frame in preparation for plotting
-#Written by Manoela Romano de Orte (with help from David Koweek)
-
-#Load the viridis colour package for later plotting
-library(viridis)
-source ("combine_calcification_photosynthesis.R")
-source ("clean_metabolic_rates_data_set.R") 
+#Script to plot calcification rates from all CISME incubations
 
 
-LIRS_metabolic_rates_clean$Species <- factor(LIRS_metabolic_rates_clean$Species, level= c("Symphyllia recta", "Goniastrea favulus", "Favia favus"))
+#----Initialize_workspace----
 
+source(here::here("scripts", "clean_metabolic_rates_data_set.R"))
 
-LIRS_metabolic_rates_clean <- 
+#----Build_plot----
+
+calcification_plot_all_species <-
   LIRS_metabolic_rates_clean %>% 
-  mutate(species_metabolism = str_c(Species, Metabolism, sep = " "))
-
-calcification_plot <- 
-  ggplot(data = LIRS_metabolic_rates_clean %>% arrange(calcification_rate_mmol_h),
-         mapping = aes(x = Species, 
+  mutate(species_metabolism = str_c(Species, Metabolism, sep = " ")) %>% 
+  arrange(calcification_rate_mmol_h) %>% 
+  ggplot(mapping = aes(x = Species, 
                        y=calcification_rate_mmol_h, 
                        fill = Metabolism,
                        group = species_metabolism)) + 
@@ -40,7 +35,10 @@ calcification_plot <-
               ncol = 2) 
 
 
-plot(calcification_plot)
-
-
+#----Export_plot----
+ggsave(filename = here::here("output", "figures", "figure_S1.pdf"),
+       plot = calcification_plot_all_species,
+       height = 6,
+       width = 8,
+       units = "in")
 

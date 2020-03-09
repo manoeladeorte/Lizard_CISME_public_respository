@@ -1,16 +1,11 @@
-# Script to calculate the net respiratory quotient following Barnes et al. 1983
-# Use pH, O2, and TA measurements to invert Barnes Eq. 9 to solve for Q
-# Written by Manoela Romano de Orte (with help from David Koweek)
+# Script to calculate the metabolic quotient (Q) following Barnes et al. 1983
+# Use pH, O2, and TA measurements to invert Barnes Eq. 9 to solve for the metabolic quotient
 
 #----Initialize_workspace----
 
-#Load necessary packages
-library(tidyverse)
-#seacarb loaded when "calculate_photosynthesis_DIC.R" script is sourced
-
 #Source necessary scripts
-source("calculate_photosynthesis_DIC.R") #(sources calculated DIC needed for Barnes equation)
-source("averaging_interval.R") #sets the interval of which beginning and end measurements are averaged
+source(here::here("scripts", "calculate_photosynthesis_DIC.R")) #(sources calculated DIC needed for Barnes equation)
+source(here::here("scripts", "averaging_interval.R")) #sets the interval of which beginning and end measurements are averaged 
 
 #Define custom function for taking standard error of all non-NA values in group
 std_error <- function(x) {
