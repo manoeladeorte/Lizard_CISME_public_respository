@@ -1,0 +1,162 @@
+Tests of significance
+
+
+Daytime net photosynthesis
+
+	Welch Two Sample t-test
+
+data:  photosynthesis_rate_oxygen_Q_mmol_h by Substrate
+t = 5.9504, df = 6.8421, p-value = 0.0006209
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 13.13309 30.58982
+sample estimates:
+mean in group Algal Turf Community           mean in group Live Coral 
+                         26.678044                           4.816588 
+
+
+
+
+Daytime net photosynthesis (non-parametric)
+
+	Wilcoxon rank sum test
+
+data:  photosynthesis_rate_oxygen_Q_mmol_h by Substrate
+W = 49, p-value = 0.0005828
+alternative hypothesis: true location shift is not equal to 0
+
+
+
+
+Nighttime net photosynthesis
+
+	Welch Two Sample t-test
+
+data:  photosynthesis_rate_oxygen_Q_mmol_h by Substrate
+t = 4.2564, df = 14.713, p-value = 0.0007184
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 1.656930 4.992339
+sample estimates:
+mean in group Algal Turf Community           mean in group Live Coral 
+                         -5.122103                          -8.446738 
+
+
+
+
+Nighttime net photosynthesis (non-parametric)
+
+	Wilcoxon rank sum test
+
+data:  photosynthesis_rate_oxygen_Q_mmol_h by Substrate
+W = 49, p-value = 0.0005828
+alternative hypothesis: true location shift is not equal to 0
+
+
+
+
+Daytime net calcificiation
+
+	Welch Two Sample t-test
+
+data:  calcification_rate_mmol_h by Substrate
+t = -1.4686, df = 10.787, p-value = 0.1705
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.1956647  0.8422205
+sample estimates:
+mean in group Algal Turf Community           mean in group Live Coral 
+                          4.073667                           5.750389 
+
+
+
+
+Daytime net calcification (non-parameteric)
+
+	Wilcoxon rank sum test
+
+data:  calcification_rate_mmol_h by Substrate
+W = 11, p-value = 0.09732
+alternative hypothesis: true location shift is not equal to 0
+
+
+
+
+Nighttime net calcification
+
+	Welch Two Sample t-test
+
+data:  calcification_rate_mmol_h by Substrate
+t = -12.361, df = 19.98, p-value = 8.136e-11
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -5.081636 -3.614156
+sample estimates:
+mean in group Algal Turf Community           mean in group Live Coral 
+                         -2.090817                           2.257079 
+
+
+
+
+Nighttime net calcification (non-parametric)
+
+	Wilcoxon rank sum test
+
+data:  calcification_rate_mmol_h by Substrate
+W = 0, p-value = 2.835e-06
+alternative hypothesis: true location shift is not equal to 0
+
+
+
+
+Daytime metabolic quotient
+
+	Welch Two Sample t-test
+
+data:  Q_bar by Substrate
+t = 10.955, df = 10.83, p-value = 3.391e-07
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.8794861 1.3227748
+sample estimates:
+mean in group Algal Turf Community           mean in group Live Coral 
+                         1.8901547                          0.7890243 
+
+
+
+
+Daytime metabolic quotient (non-parameteric)
+
+	Wilcoxon rank sum test
+
+data:  Q_bar by Substrate
+W = 49, p-value = 0.0005828
+alternative hypothesis: true location shift is not equal to 0
+
+
+
+
+Nighttime metabolic quotient
+
+	Welch Two Sample t-test
+
+data:  Q_bar by Substrate
+t = -3.528, df = 12.923, p-value = 0.003741
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.6010533 -0.1443395
+sample estimates:
+mean in group Algal Turf Community           mean in group Live Coral 
+                         0.7722315                          1.1449279 
+
+
+
+
+Nighttime metabolic quotient (non-parametric)
+
+	Wilcoxon rank sum test
+
+data:  Q_bar by Substrate
+W = 20, p-value = 0.006634
+alternative hypothesis: true location shift is not equal to 0
+
