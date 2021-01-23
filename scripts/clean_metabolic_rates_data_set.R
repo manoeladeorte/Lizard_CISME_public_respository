@@ -31,4 +31,4 @@ LIRS_metabolic_rates_clean <-
 LIRS_metabolic_rates_clean <- 
   LIRS_metabolic_rates_clean %>% 
   mutate(Substrate = case_when((Substrate == "coral") ~ "Live Coral",
-                               (Substrate == "algae") ~ "Algal Turf Community"))
+                               (Substrate == "algae") ~ "Dead Coral Substrate"))

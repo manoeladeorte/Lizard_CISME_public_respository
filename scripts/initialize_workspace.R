@@ -9,6 +9,7 @@ library(naniar)
 library(lubridate)
 library(readxl)
 library(viridis)
+library(cowplot)
 
 
 #Define path for the individual CISME files

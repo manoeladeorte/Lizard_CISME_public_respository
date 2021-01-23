@@ -23,7 +23,7 @@ TA_data_sheet <-
 TA_precision_sheet <- 
   read_xls(path = TA_master_data,
            sheet = "Precision") %>% 
-  rename(Run_Date = X__1, 
+  rename(Run_Date = ...1, 
          St_Dev = DAILY,
          Replicates = Samples) %>% 
   select(c(Run_Date,

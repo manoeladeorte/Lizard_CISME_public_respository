@@ -79,8 +79,8 @@ Q_df <-
                  "BA_f",
                  "HA_i",
                  "HA_f"), 
-               funs(mean(.,na.rm = TRUE), 
-                    std_error(.)
+               list(~ mean(., na.rm = TRUE), 
+                    ~ std_error(.)
                     )
                ) %>% 
   rename(TA_i_mean = Alk_mini_i_imputed_mean,

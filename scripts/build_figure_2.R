@@ -10,6 +10,7 @@ calcification_plot <-
   LIRS_metabolic_rates_clean %>% 
   #Using only Symphyllia recta as the primary species
   filter(Species == "Symphyllia recta") %>% 
+  mutate(Metabolism = factor(Metabolism, levels = c("Resp", "Photo"))) %>% 
   #Arrange the data by increasing calcification rate
   arrange(calcification_rate_mmol_h) %>% 
   ggplot(mapping = aes(x = Species,
@@ -27,7 +28,8 @@ calcification_plot <-
   scale_fill_viridis(name = element_blank(), 
                      labels = c("Dark","Light"),
                      discrete = TRUE) +
-  scale_y_continuous(name = expression('Net calcification'~(mmol~C~m^{-2}~hr^{-1}))) +
+  scale_y_continuous(name = expression(Net~calcification~or~dissolution~(mmol~CaCO[3]~m^{-2}~hr^{-1})),
+                     breaks = seq(-2.5,7.5, by = 2.5)) +
   scale_x_discrete(name = element_blank()) +
   theme_bw() +
   #Italicize species names
@@ -50,7 +52,7 @@ calcification_plot <-
 ggsave(filename = here::here("output", "figures", "figure_2.pdf"),
        plot = calcification_plot,
        height = 6,
-       width = 6,
+       width = 7,
        units = "in")
 
 

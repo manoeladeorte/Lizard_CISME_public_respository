@@ -6,20 +6,20 @@ Daytime net photosynthesis
 	Welch Two Sample t-test
 
 data:  photosynthesis_rate_oxygen_Q_mmol_h by Substrate
-t = 5.9504, df = 6.8421, p-value = 0.0006209
+t = 5.4817, df = 6.873, p-value = 0.000983
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 13.13309 30.58982
+ 11.28563 28.52159
 sample estimates:
 mean in group Algal Turf Community           mean in group Live Coral 
-                         26.678044                           4.816588 
+                         24.952836                           5.049225 
 
 
 
 
 Daytime net photosynthesis (non-parametric)
 
-	Wilcoxon rank sum test
+	Wilcoxon rank sum exact test
 
 data:  photosynthesis_rate_oxygen_Q_mmol_h by Substrate
 W = 49, p-value = 0.0005828
@@ -33,20 +33,20 @@ Nighttime net photosynthesis
 	Welch Two Sample t-test
 
 data:  photosynthesis_rate_oxygen_Q_mmol_h by Substrate
-t = 4.2564, df = 14.713, p-value = 0.0007184
+t = 4.2248, df = 15.488, p-value = 0.0006884
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 1.656930 4.992339
+ 1.371305 4.148495
 sample estimates:
 mean in group Algal Turf Community           mean in group Live Coral 
-                         -5.122103                          -8.446738 
+                         -4.784834                          -7.544734 
 
 
 
 
 Nighttime net photosynthesis (non-parametric)
 
-	Wilcoxon rank sum test
+	Wilcoxon rank sum exact test
 
 data:  photosynthesis_rate_oxygen_Q_mmol_h by Substrate
 W = 49, p-value = 0.0005828
@@ -73,7 +73,7 @@ mean in group Algal Turf Community           mean in group Live Coral
 
 Daytime net calcification (non-parameteric)
 
-	Wilcoxon rank sum test
+	Wilcoxon rank sum exact test
 
 data:  calcification_rate_mmol_h by Substrate
 W = 11, p-value = 0.09732
@@ -100,7 +100,7 @@ mean in group Algal Turf Community           mean in group Live Coral
 
 Nighttime net calcification (non-parametric)
 
-	Wilcoxon rank sum test
+	Wilcoxon rank sum exact test
 
 data:  calcification_rate_mmol_h by Substrate
 W = 0, p-value = 2.835e-06
@@ -114,20 +114,20 @@ Daytime metabolic quotient
 	Welch Two Sample t-test
 
 data:  Q_bar by Substrate
-t = 10.955, df = 10.83, p-value = 3.391e-07
+t = 9.2602, df = 10.81, p-value = 1.806e-06
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- 0.8794861 1.3227748
+ 0.7051844 1.1461651
 sample estimates:
 mean in group Algal Turf Community           mean in group Live Coral 
-                         1.8901547                          0.7890243 
+                         1.7577894                          0.8321146 
 
 
 
 
 Daytime metabolic quotient (non-parameteric)
 
-	Wilcoxon rank sum test
+	Wilcoxon rank sum exact test
 
 data:  Q_bar by Substrate
 W = 49, p-value = 0.0005828
@@ -141,20 +141,20 @@ Nighttime metabolic quotient
 	Welch Two Sample t-test
 
 data:  Q_bar by Substrate
-t = -3.528, df = 12.923, p-value = 0.003741
+t = -3.5456, df = 14.174, p-value = 0.003174
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -0.6010533 -0.1443395
+ -0.4878880 -0.1203686
 sample estimates:
 mean in group Algal Turf Community           mean in group Live Coral 
-                         0.7722315                          1.1449279 
+                          0.719095                           1.023223 
 
 
 
 
 Nighttime metabolic quotient (non-parametric)
 
-	Wilcoxon rank sum test
+	Wilcoxon rank sum exact test
 
 data:  Q_bar by Substrate
 W = 20, p-value = 0.006634

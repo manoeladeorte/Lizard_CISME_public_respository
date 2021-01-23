@@ -7,7 +7,7 @@ source(here::here("scripts", "clean_metabolic_rates_data_set.R"))
 
 #----Build_plot----
 
-calcification_plot_all_species <-
+photosynthesis_plot_all_species <-
   LIRS_metabolic_rates_clean %>% 
   mutate(Metabolism = factor(Metabolism, levels = c("Resp", "Photo"))) %>% 
   mutate(Species = factor(Species, levels = c("Symphyllia recta",
@@ -20,9 +20,9 @@ calcification_plot_all_species <-
                                                                     "Goniastrea favulus Photo",
                                                                     "Favia favus Resp",
                                                                     "Favia favus Photo"))) %>% 
-  arrange(calcification_rate_mmol_h) %>% 
+  arrange(photosynthesis_rate_oxygen_Q_mmol_h) %>% 
   ggplot(mapping = aes(x = Species, 
-                       y=calcification_rate_mmol_h, 
+                       y=photosynthesis_rate_oxygen_Q_mmol_h, 
                        fill = Metabolism,
                        group = species_metabolism)) + 
   geom_bar (stat = "identity", 
@@ -32,7 +32,7 @@ calcification_plot_all_species <-
   scale_fill_viridis(name = element_blank(), 
                      labels = c("Dark","Light"),
                      discrete = TRUE) +
-  scale_y_continuous(name = expression(Net~calcification~or~dissolution~(mmol~CaCO[3]~m^{-2}~hr^{-1}))) +
+  scale_y_continuous(name = expression(Net~photosynthesis~or~respiration~(mmol~C~m^{-2}~hr^{-1}))) +
   scale_x_discrete(labels = c("S. recta", "G. favulus", "F. favus")) +
   theme_bw() +
   #Italicize species names
@@ -48,8 +48,8 @@ calcification_plot_all_species <-
 
 
 #----Export_plot----
-ggsave(filename = here::here("output", "figures", "figure_S1.pdf"),
-       plot = calcification_plot_all_species,
+ggsave(filename = here::here("output", "figures", "figure_S2.pdf"),
+       plot = photosynthesis_plot_all_species,
        height = 6,
        width = 8,
        units = "in")

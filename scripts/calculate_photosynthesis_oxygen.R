@@ -19,7 +19,8 @@ CISME_oxygen_pH_data_sets_cleaned <-
 oxygen_regressions <-  
   #For each CISME file...
   CISME_oxygen_pH_data_sets_cleaned %>% 
-  nest(-CISME_filename) %>% 
+  group_by(CISME_filename) %>% 
+  nest() %>% 
   #Fit a linear regression to the oxygen data as a function of time
   #Then clean up the output
   mutate(fit = map(data, ~lm(CISME_oxygen ~ CISME_elapsed_time,
@@ -34,12 +35,15 @@ CISME_oxygen_pH_data_sets_cleaned <-
   #Take the full data set with all of the CISME oxygen measurements for all the files
   CISME_oxygen_pH_data_sets_cleaned %>% 
   #Chunk the data by filename
-  nest(-CISME_filename) %>% 
+  group_by(CISME_filename) %>% 
+  nest() %>% 
   #Join it to the oxygen regression data
   left_join(oxygen_regressions,
-            by = "CISME_filename") %>% 
+            by = c("CISME_filename",
+                   "data")) %>% 
   #Unpack the data
-  unnest() %>% 
+  unnest(cols = c(data)) %>% 
+  ungroup() %>% 
   #Save the slope and error estimate on the slope as new variables
   dplyr::mutate(dO2_dt = estimate, #umol/kg/min
          SE_dO2_dt = std.error,

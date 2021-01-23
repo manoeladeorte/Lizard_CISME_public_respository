@@ -32,6 +32,9 @@ for (i in 1:nrow(LIRS_master_data)) {
     )
     
     #Grab the necessary information from the CISME file to place it into our data frame
+    CISME_ID <- 
+      readLines(CISME_file, n = 1)
+    
     CISME_elapsed_time <- 
       CISME_data[["Time(m)"]]
     
@@ -72,7 +75,8 @@ for (i in 1:nrow(LIRS_master_data)) {
       LIRS_master_data[["Date"]][i]
     
     #Combine the information into a data frame and put the entire data frame into a list element (part of a list)
-    data[[i]] <- data.frame(CISME_elapsed_time = CISME_elapsed_time,
+    data[[i]] <- data.frame(CISME_ID = CISME_ID,
+                            CISME_elapsed_time = CISME_elapsed_time,
                             CISME_oxygen = CISME_oxygen,
                             CISME_pH = CISME_pH,
                             CISME_filename = CISME_filename,
@@ -93,7 +97,7 @@ for (i in 1:nrow(LIRS_master_data)) {
 CISME_oxygen_pH_data_sets <- 
   plyr::ldply(data,
               data.frame) %>% 
-  tbl_df()
+  as_tibble()
 
 #----Generate_diagnostic_plots----
 
@@ -129,3 +133,27 @@ CISME_oxygen_pH_data_sets_cleaned <-
   filter(CISME_filename != filename_to_remove,
          CISME_elapsed_time > CISME_t_i,
          CISME_elapsed_time < CISME_t_f)
+
+#And now we need to calibrate the pH probes - this is based on calibration with a spec pH sample on 31-Oct-2018
+#Spec pH measured 7.801 @ 25C
+#CISME 1 (CISME0006669c1e8a) measured 7.813 @ 29.2 C
+#CISME 2 (CISME0006669c1a4f) measured 7.905 @ 29.2 C
+
+T_pH_slope <- -0.0147 #pH units/ deg C
+
+pH_offsets <- 
+  c(
+    ((((29.2 - 25) * T_pH_slope) + 7.801) - 7.813),
+    ((((29.2 - 25) * T_pH_slope) + 7.801) - 7.905)
+  )
+
+
+CISME_oxygen_pH_data_sets_cleaned <- 
+  CISME_oxygen_pH_data_sets_cleaned %>% 
+  mutate(CISME_pH = case_when((CISME_ID == "DeviceId:CISME0006669c1e8a") ~ CISME_pH + pH_offsets[1],
+                              (CISME_ID == "DeviceId:CISME0006669c1a4f") ~ CISME_pH + pH_offsets[2]))
+
+#Now can drop the CISME ID column
+CISME_oxygen_pH_data_sets_cleaned <- 
+  CISME_oxygen_pH_data_sets_cleaned %>% 
+  select(-CISME_ID)

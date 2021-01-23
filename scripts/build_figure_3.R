@@ -7,7 +7,7 @@ source(here::here("scripts", "clean_metabolic_rates_data_set.R"))
 
 #----Build_plot----
 
-#Build character lookup tables for facet lables
+#Build character lookup tables for facet labels
 metabolism_table <- c(Resp = "Dark", Photo = "Light")
 
 dO2_Q_plot <- 
@@ -20,6 +20,7 @@ dO2_Q_plot <-
   left_join(LIRS_metabolic_rates_clean,
             .,
             by = "file") %>% 
+  mutate(Metabolism = factor(Metabolism, levels = c("Resp", "Photo"))) %>% 
   mutate(delta_O2 = (O2_f_mean - O2_i_mean) * 1e6) %>% #move from mol/kg to umol/kg
   ggplot(aes(x = delta_O2,
              y = Q_bar)) +
@@ -38,7 +39,7 @@ dO2_Q_plot <-
                      values = c(21, 24))  +
   scale_linetype_discrete(name = element_blank()) +
   scale_x_continuous(name = expression(Delta~O[2]~(mu~mol~kg^{-1}))) +
-  scale_y_continuous(name = expression(Photosynthetic~Quotient~~(-Delta~DIC~"/"~Delta~O[2]))) +
+  scale_y_continuous(name = expression(Metabolic~Quotient~~(-Delta~DIC~"/"~Delta~O[2]))) +
   #Add reference line
   geom_hline(yintercept = 1) +
   theme_bw() +
