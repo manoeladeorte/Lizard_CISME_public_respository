@@ -1,15 +1,16 @@
-
+# Install "pacman"
+# install.packages("pacman")
 
 # Load all necessary packages here and check for conflicts
-library(here)
-library(tidyverse)
-library(seacarb)
-library(broom)
-library(naniar)
-library(lubridate)
-library(readxl)
-library(viridis)
-library(cowplot)
+pacman::p_load(here,
+               tidyverse,
+               seacarb,
+               broom,
+               naniar,
+               lubridate,
+               readxl,
+               viridis,
+               cowplot)
 
 
 #Define path for the individual CISME files

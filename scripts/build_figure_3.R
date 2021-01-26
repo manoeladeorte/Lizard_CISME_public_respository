@@ -22,6 +22,7 @@ dO2_Q_plot <-
             by = "file") %>% 
   mutate(Metabolism = factor(Metabolism, levels = c("Resp", "Photo"))) %>% 
   mutate(delta_O2 = (O2_f_mean - O2_i_mean) * 1e6) %>% #move from mol/kg to umol/kg
+  filter(Species == "Symphyllia recta") %>% 
   ggplot(aes(x = delta_O2,
              y = Q_bar)) +
   geom_point(aes(shape = Substrate, 

@@ -11,7 +11,7 @@ alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  11.28563 28.52159
 sample estimates:
-mean in group Algal Turf Community           mean in group Live Coral 
+mean in group Dead Coral Substrate           mean in group Live Coral 
                          24.952836                           5.049225 
 
 
@@ -38,7 +38,7 @@ alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  1.371305 4.148495
 sample estimates:
-mean in group Algal Turf Community           mean in group Live Coral 
+mean in group Dead Coral Substrate           mean in group Live Coral 
                          -4.784834                          -7.544734 
 
 
@@ -65,7 +65,7 @@ alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -4.1956647  0.8422205
 sample estimates:
-mean in group Algal Turf Community           mean in group Live Coral 
+mean in group Dead Coral Substrate           mean in group Live Coral 
                           4.073667                           5.750389 
 
 
@@ -92,7 +92,7 @@ alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -5.081636 -3.614156
 sample estimates:
-mean in group Algal Turf Community           mean in group Live Coral 
+mean in group Dead Coral Substrate           mean in group Live Coral 
                          -2.090817                           2.257079 
 
 
@@ -119,7 +119,7 @@ alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  0.7051844 1.1461651
 sample estimates:
-mean in group Algal Turf Community           mean in group Live Coral 
+mean in group Dead Coral Substrate           mean in group Live Coral 
                          1.7577894                          0.8321146 
 
 
@@ -146,7 +146,7 @@ alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
  -0.4878880 -0.1203686
 sample estimates:
-mean in group Algal Turf Community           mean in group Live Coral 
+mean in group Dead Coral Substrate           mean in group Live Coral 
                           0.719095                           1.023223 
 
 
