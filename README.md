@@ -2,7 +2,7 @@
 
 This is a public repository containing all of the data and code necessary to reproduce the results in:
 
-**Unexpected contribution of communities colonizing dead coral substrate to the net calcification of coral reefs** (submitted; final citation to be updated after acceptance)
+**Unexpected contribution of communities colonizing dead coral substrate to the net calcification of coral reefs**
 
 All data analysis and visualization were performed in R (v. 4.0.3). A list of necessary packages can be found in `scripts/initialize_workspace.R`.
 
